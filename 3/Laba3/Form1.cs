@@ -12,7 +12,8 @@ namespace Laba3
         }
 
         private string path = "";
-        private string form_name = "Новый.rtf";
+        private static string default_name = "Новый документ.txt";
+        private string form_name = default_name;
 
         private DialogResult ansDio()
         {
@@ -32,7 +33,7 @@ namespace Laba3
             {
                 rich_text_box.LoadFile(path);
             }
-            if ((path == "" && text_box.Text != "") || (path != "" && text_box.Rtf != rich_text_box.Rtf))
+            if ((path == "" && text_box.Text != "") || (path != "" && text_box.Text != "" && text_box.Rtf != rich_text_box.Rtf))
             {
                 DialogResult res = ansDio();
                 if (res == DialogResult.Cancel)
@@ -44,6 +45,7 @@ namespace Laba3
                     сохранитьToolStripMenuItem1_Click(sender, e);
             }
             rich_text_box.Dispose();
+            Text = path;
         }
 
         private void выходToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -155,7 +157,7 @@ namespace Laba3
             }
             if ((path == "" && text_box.Text != "") || (path != "" && text_box.Rtf != rich_text_box.Rtf))
             {
-                Text = "*" + form_name;
+                Text = default_name;
             }
             else
             {
@@ -174,7 +176,7 @@ namespace Laba3
             {
                 text_box.SaveFile(path);
             }
-            txt_TextChanged_1(sender, e);
+            //txt_TextChanged_1(sender, e);
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -190,6 +192,14 @@ namespace Laba3
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             text_box.Cut();
+        }
+
+        private void создатьФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            save(sender, e);
+            text_box.Text = "";
+            path = "";
+            Text = "";
         }
     }
 }

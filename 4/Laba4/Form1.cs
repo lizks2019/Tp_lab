@@ -86,18 +86,6 @@ namespace Laba4
                 case 1:
                     chart1.Series["y"].ChartType = SeriesChartType.Spline;
                     break;
-                case 2:
-                    chart1.Series["y"].ChartType = SeriesChartType.Bar;
-                    break;
-                case 3:
-                    chart1.Series["y"].ChartType = SeriesChartType.Column;
-                    break;
-                case 4:
-                    chart1.Series["y"].ChartType = SeriesChartType.Pie;
-                    break;
-                case 5:
-                    chart1.Series["y"].ChartType = SeriesChartType.Radar;
-                    break;
             }
 
         }
@@ -119,7 +107,7 @@ namespace Laba4
                 button3_Click(null, null);
                 for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                 {
-                    chart1.Series["y"].Points.AddXY(dataGridView1[0, i].Value, dataGridView1[1, i].Value);
+                    chart1.Series["y"].Points.AddXY( dataGridView1[0, i].Value, dataGridView1[1, i].Value );
                 }
             }
             catch (Exception)
@@ -150,6 +138,7 @@ namespace Laba4
                 string[] s = File.ReadAllLines(path);
                 s = s.Where(r => !string.IsNullOrEmpty(r)).ToArray();
                 dataGridView1.RowCount = s.Length + 1;
+
                 for (int i = 0; i < s.Length; i++)
                 {
                     str = s[i].Split(';');
@@ -163,6 +152,7 @@ namespace Laba4
                         {
                             dataGridView1.Rows[i].ErrorText += "Некорректное значение \"" + str[j] + "\"\n";
                         }
+                        
                         dataGridView1[j, i].Value = str[j];
                     }
                     dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();

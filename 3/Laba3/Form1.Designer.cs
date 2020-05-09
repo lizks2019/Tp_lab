@@ -52,6 +52,7 @@
             this.SaveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.создатьФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +77,7 @@
             // 
             this.файлToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem1,
+            this.создатьФайлToolStripMenuItem,
             this.toolStripSeparator,
             this.сохранитьToolStripMenuItem1,
             this.сохранитькакToolStripMenuItem1,
@@ -224,6 +226,13 @@
             // 
             this.SaveFileDialog1.Filter = "RTF files(*.rtf)|*.rtf";
             // 
+            // создатьФайлToolStripMenuItem
+            // 
+            this.создатьФайлToolStripMenuItem.Name = "создатьФайлToolStripMenuItem";
+            this.создатьФайлToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.создатьФайлToolStripMenuItem.Text = "Создать файл";
+            this.создатьФайлToolStripMenuItem.Click += new System.EventHandler(this.создатьФайлToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +278,7 @@
         private System.Windows.Forms.SaveFileDialog SaveFileDialog1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.ToolStripMenuItem создатьФайлToolStripMenuItem;
     }
 }
 

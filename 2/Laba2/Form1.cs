@@ -12,11 +12,12 @@ namespace Laba2
         }
 
         private string path="";
-        private string form_name = "Новыйт.txt";
+        private static string default_name = "Новый документ.txt";
+        private string form_name = default_name;
 
         private DialogResult ansDio()
         {
-            return MessageBox.Show("Вы хотите сохранить изменения в файле\n" + form_name + "?", "Уведомление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            return MessageBox.Show("Вы хотите сохранить изменения в файле\n" + Text + "?", "Уведомление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
         }
 
         private void split()
@@ -27,7 +28,7 @@ namespace Laba2
 
         private void save(object sender, EventArgs e)
         {
-            if ((path == "" && text_box.Text != "") || (path != "" && text_box.Text != File.ReadAllText(path)))
+            if ((path == "" && text_box.Text != "") || (path != "" && text_box.Text != "" &&  text_box.Text != File.ReadAllText(path)))
             {
                 DialogResult res = ansDio();
                 if (res == DialogResult.Cancel)
@@ -35,6 +36,7 @@ namespace Laba2
                 if (res == DialogResult.Yes)
                     сохранитьToolStripMenuItem1_Click(sender, e);
             }
+            Text = path;
         }
 
         private void выходToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -121,9 +123,9 @@ namespace Laba2
 
         private void сохранитькакToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Title = "Сохранить как...";
+            saveFileDialog1.FileName = Text;
             if (saveFileDialog1.ShowDialog()==DialogResult.OK)
-            {
+            {         
                 path = saveFileDialog1.FileName;
                 File.WriteAllText(path, text_box.Text);
                 split();
@@ -140,7 +142,7 @@ namespace Laba2
             }
             if ((path == "" && text_box.Text != "") || (path != "" && text_box.Text != s))
             {
-                Text = "*" + form_name;
+                Text = default_name;
             }
             else
             {
@@ -158,7 +160,15 @@ namespace Laba2
             {
                 File.WriteAllText(path, text_box.Text);
             }
-            txt_TextChanged_1(sender, e);
+            //txt_TextChanged_1(sender, e);
+        }
+
+        private void new_file_Click(object sender, EventArgs e)
+        {
+            save(sender, e);
+            text_box.Text = "";
+            path = "";
+            Text = "";
         }
     }
 }

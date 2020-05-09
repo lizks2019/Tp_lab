@@ -47,6 +47,7 @@
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.new_file = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +71,7 @@
             // 
             this.файлToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem1,
+            this.new_file,
             this.toolStripSeparator,
             this.сохранитьToolStripMenuItem1,
             this.сохранитькакToolStripMenuItem1,
@@ -180,11 +182,19 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Text files(*.txt)|*.txt";
+            this.saveFileDialog1.Title = "Сохранить";
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Text files(*.txt)|*.txt";
+            // 
+            // new_file
+            // 
+            this.new_file.Name = "new_file";
+            this.new_file.Size = new System.Drawing.Size(234, 22);
+            this.new_file.Text = "Создать файл";
+            this.new_file.Click += new System.EventHandler(this.new_file_Click);
             // 
             // Form1
             // 
@@ -225,6 +235,7 @@
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem new_file;
     }
 }
 

@@ -66,7 +66,6 @@
             this.сохранитьКакToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clear_table = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.clear_graph = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -280,6 +279,7 @@
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Color = System.Drawing.Color.Red;
+            series1.IsXValueIndexed = true;
             series1.LabelForeColor = System.Drawing.Color.Red;
             series1.Legend = "Legend1";
             series1.MarkerBorderColor = System.Drawing.Color.Transparent;
@@ -325,11 +325,7 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.Items.AddRange(new object[] {
             "Прямая линия",
-            "Кривая линия",
-            "Бар",
-            "Колонны",
-            "Круговая диаграмма",
-            "Радар"});
+            "Кривая линия"});
             this.comboBox1.Location = new System.Drawing.Point(277, 53);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
@@ -426,23 +422,6 @@
             this.clear_table.UseVisualStyleBackColor = false;
             this.clear_table.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(365, 16);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(183, 30);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "Построить";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // clear_graph
             // 
             this.clear_graph.BackColor = System.Drawing.Color.GreenYellow;
@@ -491,7 +470,6 @@
             this.ClientSize = new System.Drawing.Size(721, 387);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.clear_graph);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.clear_table);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label6);
@@ -550,7 +528,6 @@
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.Button clear_table;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button clear_graph;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;

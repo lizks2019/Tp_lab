@@ -18,12 +18,3 @@ C:\Users\babee\OneDrive\Desktop\les\ТП\Калькулятор (1)\Laba111\obj\
 C:\Users\babee\OneDrive\Desktop\les\ТП\Калькулятор (1)\Laba111\obj\Debug\Laba111.csproj.CoreCompileInputs.cache
 C:\Users\babee\OneDrive\Desktop\les\ТП\Калькулятор (1)\Laba111\obj\Debug\Laba111.exe
 C:\Users\babee\OneDrive\Desktop\les\ТП\Калькулятор (1)\Laba111\obj\Debug\Laba111.pdb
-G:\1\Laba111\bin\Debug\Laba111.exe.config
-G:\1\Laba111\bin\Debug\Laba111.exe
-G:\1\Laba111\bin\Debug\Laba111.pdb
-G:\1\Laba111\obj\Debug\Laba111.csprojAssemblyReference.cache
-G:\1\Laba111\obj\Debug\Laba111.Form1.resources
-G:\1\Laba111\obj\Debug\Laba111.Properties.Resources.resources
-G:\1\Laba111\obj\Debug\Laba111.csproj.GenerateResource.cache
-G:\1\Laba111\obj\Debug\Laba111.exe
-G:\1\Laba111\obj\Debug\Laba111.pdb
