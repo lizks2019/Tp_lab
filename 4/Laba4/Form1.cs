@@ -128,40 +128,47 @@ namespace Laba4
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string[] str;
-            openFileDialog1.Title = "Загрузка";
-            openFileDialog1.FileName = "";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                button2_Click(null, null);
-                path = openFileDialog1.FileName;
-                string[] s = File.ReadAllLines(path);
-                s = s.Where(r => !string.IsNullOrEmpty(r)).ToArray();
-                dataGridView1.RowCount = s.Length + 1;
-
-                for (int i = 0; i < s.Length; i++)
+                string[] str;
+                openFileDialog1.Title = "Загрузка";
+                openFileDialog1.FileName = "";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    str = s[i].Split(';');
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                    button2_Click(null, null);
+                    path = openFileDialog1.FileName;
+                    string[] s = File.ReadAllLines(path);
+                    s = s.Where(r => !string.IsNullOrEmpty(r)).ToArray();
+                    dataGridView1.RowCount = s.Length + 1;
+
+                    for (int i = 0; i < s.Length; i++)
                     {
-                        try
+                        str = s[i].Split(';');
+                        for (int j = 0; j < dataGridView1.ColumnCount; j++)
                         {
-                            Double.Parse(str[j]);
+                            try
+                            {
+                                Double.Parse(str[j]);
+                            }
+                            catch (Exception)
+                            {
+                                dataGridView1.Rows[i].ErrorText = " Некорректное значение ";
+                            }
+
+                            dataGridView1[j, i].Value = str[j];
                         }
-                        catch (Exception)
-                        {
-                            dataGridView1.Rows[i].ErrorText += "Некорректное значение \"" + str[j] + "\"\n";
-                        }
-                        
-                        dataGridView1[j, i].Value = str[j];
+                        dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
                     }
-                    dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                    button4_Click(null, null);
+                    split();
+                    begin_box.Clear();
+                    end_box.Clear();
+                    step_box.Clear();
                 }
-                button4_Click(null, null);
-                split();
-                begin_box.Clear();
-                end_box.Clear();
-                step_box.Clear();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла непредвиденная ошибка, проверьте правильность файла!");
             }
         }
 
