@@ -204,6 +204,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Enabled = false;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(23, 206);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
@@ -413,7 +414,7 @@
             this.clear_table.FlatAppearance.BorderSize = 0;
             this.clear_table.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.clear_table.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clear_table.Location = new System.Drawing.Point(194, 346);
+            this.clear_table.Location = new System.Drawing.Point(194, 162);
             this.clear_table.Margin = new System.Windows.Forms.Padding(2);
             this.clear_table.Name = "clear_table";
             this.clear_table.Size = new System.Drawing.Size(68, 30);
@@ -467,7 +468,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(721, 387);
+            this.ClientSize = new System.Drawing.Size(721, 425);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.clear_graph);
             this.Controls.Add(this.clear_table);

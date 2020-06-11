@@ -96,8 +96,16 @@ namespace Laba4
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Rows.Clear();
+
+       {
+            try
+            {
+                dataGridView1.Rows.Clear();
+            }
+            catch(Exception)
+            {
+
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -107,11 +115,13 @@ namespace Laba4
                 button3_Click(null, null);
                 for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                 {
-                    chart1.Series["y"].Points.AddXY( dataGridView1[0, i].Value, dataGridView1[1, i].Value );
+                    chart1.Series["y"].Points.AddXY( Math.Round( Double.Parse( dataGridView1[0, i].Value.ToString() ) ,4), Math.Round(Double.Parse(dataGridView1[1, i].Value.ToString()), 4));
                 }
             }
             catch (Exception)
             {
+                dataGridView1.Refresh();
+                dataGridView1.Rows.Clear();
                 MessageBox.Show("Некорректные данные в таблице!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -131,6 +141,7 @@ namespace Laba4
             try
             {
                 string[] str;
+                char[] mass = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '.' };
                 openFileDialog1.Title = "Загрузка";
                 openFileDialog1.FileName = "";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -140,7 +151,7 @@ namespace Laba4
                     string[] s = File.ReadAllLines(path);
                     s = s.Where(r => !string.IsNullOrEmpty(r)).ToArray();
                     dataGridView1.RowCount = s.Length + 1;
-
+                    bool error_data = false;
                     for (int i = 0; i < s.Length; i++)
                     {
                         str = s[i].Split(';');
@@ -152,10 +163,22 @@ namespace Laba4
                             }
                             catch (Exception)
                             {
-                                dataGridView1.Rows[i].ErrorText = " Некорректное значение ";
+                                error_data = true;
                             }
-
-                            dataGridView1[j, i].Value = str[j];
+                            if (!error_data)
+                            {
+                                for (int k = 0; k < str[j].Length; ++k)
+                                {
+                                    foreach (char stroka in mass)
+                                    {
+                                        if (str[j][k] == stroka)
+                                        {
+                                            dataGridView1[j, i].Value = str[j];
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
                         }
                         dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
                     }
@@ -206,25 +229,26 @@ namespace Laba4
             }
         }
 
-        private string check(string str)
+        private bool check( string str )
         {
             string nums = "-1234567890.,∞";
             for (int i = 0; i < str.Length; i++)
                 if (!nums.Contains(str[i].ToString()))
-                    return str[i].ToString();
-            return "True";
+                    return false;
+            return true;
         }
 
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             string cellValue = e.FormattedValue.ToString();
-            string result = check(cellValue);
-            if (result=="True")
+            bool result = check(cellValue);
+            if ( result )
                 dataGridView1.Rows[e.RowIndex].ErrorText = null;
             else
             { 
                 e.Cancel = true;
-                dataGridView1.Rows[e.RowIndex].ErrorText = "Некорректный символ \"" + result + "\"";
+                dataGridView1.Rows[e.RowIndex].ErrorText = "Некорректный символ";
+                button2_Click(null, null);
             }
         }
 
